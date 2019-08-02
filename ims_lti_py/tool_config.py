@@ -1,7 +1,7 @@
 from collections import defaultdict
 from lxml import etree, objectify
 
-from utils import InvalidLTIConfigError
+from .utils import InvalidLTIConfigError
 
 accessors = [
         'title',
@@ -51,7 +51,7 @@ class ToolConfig():
                 else defaultdict(lambda: None)
 
         # Iterate over all provided options and save to class instance members
-        for (key, val) in kwargs.iteritems():
+        for (key, val) in kwargs.items():
             setattr(self, key, val)
 
     @staticmethod
@@ -170,12 +170,12 @@ class ToolConfig():
                 self.set_ext_params(platform, properties)
 
     def recursive_options(self,element,params):
-        for key, val in params.iteritems():
+        for key, val in params.items():
             if isinstance(val, dict):
                 options_node = etree.SubElement(element,
                       '{%s}%s' %(NSMAP['lticm'], 'options'), name =
                       key)
-                for key, val in val.iteritems():
+                for key, val in val.items():
                     self.recursive_options(options_node,{key:val})
             else:
                 param_node = etree.SubElement(element, '{%s}%s'
