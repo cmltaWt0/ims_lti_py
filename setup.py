@@ -9,7 +9,10 @@ setup(
     author_email='anson@tophatmonocle.com',
     url='https://github.com/tophatmonocle/ims_lti_py',
     packages=find_packages(),
-    install_requires=['lxml', 'oauth2'],
+    install_requires=[
+        'lxml',
+        'oauth2@git+ssh://git@github.com:cmltaWt0/python-oauth2@v1.9.1#egg=oauth2',
+    ],
     license='MIT License',
     keywords='lti',
     zip_safe=True,
