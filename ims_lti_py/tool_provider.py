@@ -8,13 +8,7 @@ from .request_validator import (
 from .outcome_request import OutcomeRequest
 from collections import defaultdict
 import re
-from urllib.parse import urlencode, urlsplit, urlunsplit
-
-try:
-    from urlparse import parse_qsl
-except ImportError:
-    # fall back for Python 2.5
-    from cgi import parse_qsl  # NOQA
+from urllib.parse import urlencode, urlsplit, urlunsplit, parse_qsl
 
 
 accessors = [

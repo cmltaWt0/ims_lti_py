@@ -78,14 +78,14 @@ class ToolConsumer(LaunchParamsMixin, RequestValidatorMixin, object):
         params.update(self._params_update())
         params.update({'oauth_consumer_key': consumer.key})
 
-        uri = urlparse.urlparse(self.launch_url)
+        uri = urlparse(self.launch_url)
         if uri.query != '':
             for param in uri.query.split('&'):
                 key, val = param.split('=')
                 if params.get(key) == None:
                     params[key] = str(val)
 
-        request = oauth2.Request(method = 'POST', 
+        request = oauth2.Request(method = 'POST',
                 url = self.launch_url,
                 parameters = params)
 
